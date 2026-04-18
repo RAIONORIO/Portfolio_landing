@@ -1,0 +1,289 @@
+@import "tailwindcss";
+
+/* ===== RESET BASE ===== */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  background-color: black;
+}
+
+/* ===== GLITCH BUTTON ===== */
+.glitch-btn {
+  position: relative;
+  padding: 6px 12px;
+  font-size: 14px;
+  color: black;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+/* camada glitch */
+.glitch-btn::after {
+  content: attr(data-text);
+  position: absolute;
+  inset: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  pointer-events: none;
+
+  --move1: inset(50% 50% 50% 50%);
+  --move2: inset(31% 0 40% 0);
+  --move3: inset(39% 0 15% 0);
+  --move4: inset(45% 0 40% 0);
+  --move5: inset(45% 0 6% 0);
+  --move6: inset(14% 0 61% 0);
+
+  clip-path: var(--move1);
+}
+
+/* hover glitch */
+.glitch-btn:hover::after {
+  animation: glitch 1.3s steps(2, end);
+  text-shadow:
+    -2px -2px 0px #1df2f0,
+     2px  2px 0px #E94BE8;
+}
+
+/* glow leve */
+.glitch-btn:hover {
+  text-shadow:
+    -1px -1px 0px #1df2f0,
+     1px  1px 0px #E94BE8;
+}
+
+/* ===== LOGO (MESMO GLITCH DOS BOTÕES) ===== */
+.logo-glitch {
+  position: relative;
+  font-size: 20px;
+  font-weight: bold;
+  color: black;
+  cursor: pointer;
+}
+
+/* camada glitch */
+.logo-glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  inset: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+
+  pointer-events: none;
+
+  --move1: inset(50% 50% 50% 50%);
+  --move2: inset(31% 0 40% 0);
+  --move3: inset(39% 0 15% 0);
+  --move4: inset(45% 0 40% 0);
+  --move5: inset(45% 0 6% 0);
+  --move6: inset(14% 0 61% 0);
+
+  clip-path: var(--move1);
+}
+
+/* hover glitch */
+.logo-glitch:hover::after {
+  animation: glitch 1.3s steps(2, end);
+  text-shadow:
+    -2px -2px 0px #1df2f0,
+     2px  2px 0px #E94BE8;
+}
+
+.logo-glitch:hover {
+  text-shadow:
+    -1px -1px 0px #1df2f0,
+     1px  1px 0px #E94BE8;
+}
+
+/* ===== ANIMAÇÃO GLITCH GLOBAL ===== */
+@keyframes glitch {
+  0%   { clip-path: var(--move1); transform: translate(0,-3px); }
+  20%  { clip-path: var(--move2); transform: translate(-3px,3px); }
+  40%  { clip-path: var(--move3); transform: translate(3px,0); }
+  60%  { clip-path: var(--move4); transform: translate(-3px,3px); }
+  80%  { clip-path: var(--move5); transform: translate(3px,-3px); }
+  100% { clip-path: var(--move1); transform: translate(0); }
+}
+
+/* ===== PORTFOLIO CARD PREMIUM ===== */
+.portfolio-card {
+  position: relative;
+  padding: 1px;
+  border-radius: 16px;
+  background: linear-gradient(to left, #1df2f0, #E94BE8);
+  transition: transform 0.3s;
+}
+
+.portfolio-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 16px;
+
+  transform: scale(0.95);
+  filter: blur(25px);
+ background: linear-gradient(to left, #1df2f0, #E94BE8);
+
+  z-index: -1;
+  opacity: 1;
+  transition: 0.6s;
+}
+
+/* conteúdo interno */
+.portfolio-card-inner {
+  background: #0a0a0a;
+  border-radius: 15px;
+  padding: 24px;
+  height: 100%;
+}
+
+/* hover */
+.portfolio-card:hover {
+  transform: translateY(-6px);
+}
+
+.portfolio-card:hover::after {
+  opacity: 0;
+}
+
+/* texto hover */
+.portfolio-card:hover .title {
+  color: #f7ba2b;
+  transition: 0.4s;
+}
+/* ===== IMAGE GLITCH ===== */
+.glitch-img {
+  position: relative;
+  display: inline-block;
+}
+
+.glitch-img img {
+  display: block;
+  border-radius: 16px;
+}
+
+/* camadas RGB */
+.glitch-img::before,
+.glitch-img::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url("/src/assets/rai.png") center/cover no-repeat;
+  border-radius: 16px;
+  opacity: 0;
+}
+
+/* camada azul */
+.glitch-img::before {
+  filter: drop-shadow(-3px 0 #1df2f0);
+}
+
+/* camada rosa */
+.glitch-img::after {
+  filter: drop-shadow(3px 0 #E94BE8);
+}
+
+/* hover ativa glitch */
+.glitch-img:hover::before,
+.glitch-img:hover::after {
+  opacity: 1;
+  animation: glitch-img 0.6s infinite;
+}
+
+/* animação */
+@keyframes glitch-img {
+  0%   { clip-path: inset(0 0 80% 0); transform: translate(-3px, -2px); }
+  20%  { clip-path: inset(20% 0 60% 0); transform: translate(3px, 2px); }
+  40%  { clip-path: inset(40% 0 40% 0); transform: translate(-2px, 3px); }
+  60%  { clip-path: inset(60% 0 20% 0); transform: translate(2px, -3px); }
+  80%  { clip-path: inset(80% 0 0 0); transform: translate(-3px, 2px); }
+  100% { clip-path: inset(0 0 80% 0); transform: translate(0); }
+}
+.social-container {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+.social-card {
+  width: 70px;
+  height: 70px;
+  background: #2b2b2b;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 24px;
+  color: white;
+
+  transition: all 0.3s ease;
+  position: relative;
+
+  border-radius: 6px;
+}
+
+/* glow base */
+.social-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 6px;
+  opacity: 0;
+  filter: blur(15px);
+  transition: 0.3s;
+}
+
+/* HOVER GERAL */
+.social-card:hover {
+  transform: translateY(-5px) scale(1.05);
+}
+
+/* INSTAGRAM */
+.social-card.instagram:hover {
+  background: #e1306c;
+}
+.social-card.instagram:hover::before {
+  background: #e1306c;
+  opacity: 1;
+}
+
+/* GITHUB */
+.social-card.github:hover {
+  background: #333;
+}
+
+.social-card.github:hover::before {
+  background: #333;
+  opacity: 1;
+}
+
+/* LINKEDIN */
+.social-card.linkedin:hover {
+  background: #0077b5;
+}
+.social-card.linkedin:hover::before {
+  background: #0077b5;
+  opacity: 1;
+}
+
+/* WHATSAPP */
+.social-card.whatsapp:hover {
+  background: #25d366;
+}
+.social-card.whatsapp:hover::before {
+  background: #25d366;
+  opacity: 1;
+}
+.social-card.github:hover {
+  background: linear-gradient(45deg, #1df2f0, #E94BE8);
+  color: black;
+}
