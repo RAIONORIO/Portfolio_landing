@@ -1,6 +1,6 @@
 import rai from '../assets/rai.png'
 
-export default function Hero() {
+export default function Hero({ setPage }) {
   return (
     <section className="relative min-h-screen pt-24 bg-black text-white flex items-center justify-center overflow-hidden">
 
@@ -23,7 +23,10 @@ export default function Hero() {
 
         {/* IMAGE */}
 <div className="flex justify-center">
-  <div className="glitch-img">
+  <div 
+    className="glitch-img cursor-pointer"
+    onClick={() => setPage('about')}
+  >
     <img
       src={rai}
       alt="Raí"

@@ -12,7 +12,7 @@ export default function App() {
     <>
       <Navbar setPage={setPage} />
 
-      {page === 'home' && <Hero />}
+      {page === 'home' && <Hero setPage={setPage} />}
       {page === 'about' && <About />}
       {page === 'resume' && <Resume />}
       {page === 'portfolio' && <Portfolio />}
