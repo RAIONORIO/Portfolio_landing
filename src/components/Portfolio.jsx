@@ -34,33 +34,38 @@ export default function Portfolio() {
   ]
 
   return (
-    <section className="min-h-screen bg-black text-white pt-28 px-6">
+    <section className="min-h-screen bg-black text-white pt-28 px-4">
 
       <div className="max-w-6xl mx-auto">
 
-        <h1 className="text-4xl font-bold mb-10">Portfolio</h1>
+        <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-12 text-center md:text-left">
+          Portfolio
+        </h1>
 
-        <div className="grid md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
 
           {projects.map((project, index) => (
-            <div key={index} className="portfolio-card">
+            <div 
+              key={index} 
+              className="portfolio-card h-full"
+            >
+              <div className="portfolio-card-inner h-full flex flex-col justify-between">
 
-              <div className="portfolio-card-inner">
+                <div>
+                  <h2 className="title text-lg font-semibold">
+                    {project.name}
+                  </h2>
 
-                <h2 className="title text-lg font-semibold">
-                  {project.name}
-                </h2>
+                  <p className="text-gray-400 text-sm mt-3 leading-relaxed">
+                    {project.desc}
+                  </p>
+                </div>
 
-                <p className="text-gray-400 text-sm mt-2">
-                  {project.desc}
-                </p>
-
-                <span className="text-xs text-blue-400 mt-4 block">
+                <span className="text-xs text-blue-400 mt-6 block">
                   {project.tech}
                 </span>
 
               </div>
-
             </div>
           ))}
 
